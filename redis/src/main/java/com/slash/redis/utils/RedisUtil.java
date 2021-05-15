@@ -8,7 +8,7 @@ package com.slash.redis.utils;
 /**
  * redisKey设计
  */
-public class RedisUtil2 {
+public class RedisUtil {
     /**
      * redis的key
      * 形式为：

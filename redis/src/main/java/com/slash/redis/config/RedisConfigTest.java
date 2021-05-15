@@ -2,7 +2,7 @@ package com.slash.redis.config;
 
 import com.slash.redis.domain.UserVo;
 import com.slash.redis.service.RedisService;
-import com.slash.redis.utils.RedisUtil2;
+import com.slash.redis.utils.RedisUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.redis.core.*;
@@ -20,7 +20,7 @@ import java.util.concurrent.TimeUnit;
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class RedisConfig2Test {
+public class RedisConfigTest {
 
     @Autowired
     private StringRedisTemplate stringRedisTemplate;
@@ -47,7 +47,7 @@ public class RedisConfig2Test {
         userVo.setAge(24);
         ValueOperations operations = redisTemplate.opsForValue();
         redisService.expireKey("name", 20, TimeUnit.SECONDS);
-        String key = RedisUtil2.getKey(UserVo.Table, "name", userVo.getName());
+        String key = RedisUtil.getKey(UserVo.Table, "name", userVo.getName());
         UserVo vo = (UserVo) operations.get(key);
         System.out.println(vo);
     }
